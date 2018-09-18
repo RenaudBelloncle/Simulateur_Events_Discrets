@@ -1,15 +1,16 @@
 class Event:
     name = None
-    Data = None
+    data = None
 
-    def __init__(self):
-        pass
+    def __init__(self, name, data):
+        self.name = name
+        self.data = data
 
     def get_name(self):
-        pass
+        return self.name
 
     def get_data(self):
-        pass
+        return self.data
 
-    def set_data(self):
-        pass
+    def set_data(self, n):
+        self.name = n

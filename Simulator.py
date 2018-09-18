@@ -1,7 +1,10 @@
 class Simulator:
+    tfinal = None
+    components = None
 
-    def __init__(self):
-        pass
+    def __init__(self, tfinal, components):
+        self.tfinal = tfinal
+        self.components = components
 
     def find_tmin(self):
         pass
