@@ -2,17 +2,18 @@ from AtomicComponent import AtomicComponent
 
 
 class Buffer(AtomicComponent):
+    tcomponent = None
 
     def __init__(self):
         pass
 
-    def dela_con(self):
+    def delta_con(self):
         pass
 
-    def dela_out(self):
+    def delta_out(self):
         pass
 
-    def dela_int(self):
+    def delta_int(self):
         pass
 
     def lambda_out(self):

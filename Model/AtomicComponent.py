@@ -3,21 +3,22 @@ from abc import ABCMeta, abstractmethod
 
 class AtomicComponent:
     __metaclass__ = ABCMeta
+    current_state = None
 
     @abstractmethod
     def __init__(self):
         pass
 
     @abstractmethod
-    def dela_int(self):
+    def delta_int(self):
         pass
 
     @abstractmethod
-    def dela_out(self):
+    def delta_out(self):
         pass
 
     @abstractmethod
-    def dela_con(self):
+    def delta_con(self):
         pass
 
     @abstractmethod
