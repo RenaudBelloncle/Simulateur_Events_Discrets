@@ -1,11 +1,12 @@
 from AtomicComponent import AtomicComponent
+from Dictionary import Dictionary
 
 
 class Generator(AtomicComponent):
     tcomponent = None
 
     def __init__(self):
-        pass
+        self.tcomponent = 0
 
     def delta_con(self):
         pass
@@ -14,10 +15,10 @@ class Generator(AtomicComponent):
         pass
 
     def delta_int(self):
-        pass
+        self.current_state = 0
 
     def lambda_out(self):
-        pass
+        return Dictionary.get_components("job")
 
     def get_ta(self):
-        pass
+        return 2.0

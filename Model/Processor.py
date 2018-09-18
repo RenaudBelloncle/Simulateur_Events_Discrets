@@ -1,4 +1,5 @@
 from AtomicComponent import AtomicComponent
+from Model import Dictionary
 
 
 class Processor(AtomicComponent):
@@ -11,13 +12,18 @@ class Processor(AtomicComponent):
         pass
 
     def delta_out(self):
-        pass
+        if self.current_state == 0:
+            self.current_state = 1
 
     def delta_int(self):
-        pass
+        if self.current_state == 1:
+            self.current_state = 0
 
     def lambda_out(self):
-        pass
+        return Dictionary.get_components("Done")
 
     def get_ta(self):
-        pass
+        if self.current_state == 0:
+            return float("inf")
+        else:
+            return 3

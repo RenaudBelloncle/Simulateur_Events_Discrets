@@ -7,7 +7,7 @@ class AtomicComponent:
 
     @abstractmethod
     def __init__(self):
-        pass
+        self.current_state = 0
 
     @abstractmethod
     def delta_int(self):
