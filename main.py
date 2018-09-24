@@ -21,5 +21,5 @@ if __name__ == '__main__':
 
     simulator = Simulator(20, [generator, buff, processor])
     logs = simulator.run()
-    plt.plot(logs[0], logs[1])
+    plt.plot(logs[0], logs[1], drawstyle="steps-post")
     plt.show()
