@@ -48,6 +48,7 @@ class Buffer(AtomicComponent):
         if self.current_state == 1:
             self.current_state = 2
             self.tcomponent = 0
+            self.q = self.q - 1
         print "\t\t\tBuffer: go to", self.current_state
 
     def lambda_out(self):
