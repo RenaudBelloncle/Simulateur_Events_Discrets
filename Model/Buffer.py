@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from AtomicComponent import AtomicComponent
 from Model import Dictionary
 

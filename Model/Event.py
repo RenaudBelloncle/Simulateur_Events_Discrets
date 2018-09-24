@@ -1,3 +1,5 @@
+# coding=utf-8
+
 class Event:
     name = None
     data = None
