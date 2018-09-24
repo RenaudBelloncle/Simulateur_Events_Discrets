@@ -33,7 +33,7 @@ class AtomicComponent:
 
     @abstractmethod
     def lambda_out(self):
-        pass
+        return []
 
     @abstractmethod
     def increase_time(self, t):

@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from AtomicComponent import AtomicComponent
-from Model.Event import Event
+from Event import Event
 
 
 class Generator(AtomicComponent):
@@ -9,16 +9,16 @@ class Generator(AtomicComponent):
     def __init__(self, dictionary):
         super(Generator, self).__init__(dictionary)
 
-    def delta_con(self, event):
-        self.delta_out(event)
-
-    def delta_out(self, event):
-        pass
-
     def delta_int(self):
         self.current_state = 0
         self.tcomponent = 0
         print "\t\t\tGenerator: go to", self.current_state
+
+    def delta_out(self, event):
+        pass
+
+    def delta_con(self, event):
+        self.delta_out(event)
 
     def lambda_out(self):
         next_state = self.dictionary.get_components("job")

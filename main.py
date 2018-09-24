@@ -1,8 +1,8 @@
 # coding=utf-8
-from Model.Generator import Generator
-from Model.Buffer import Buffer
-from Model.Processor import Processor
-from Model.Dictionary import Dictionary
+from Model1_GBP.Generator import Generator
+from Model1_GBP.Buffer import Buffer
+from Model1_GBP.Processor import Processor
+from Dictionary import Dictionary
 from Simulator import Simulator
 import matplotlib.pyplot as plt
 

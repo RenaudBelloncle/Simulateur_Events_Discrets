@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from AtomicComponent import AtomicComponent
-from Model.Event import Event
+from Event import Event
 
 
 class Buffer(AtomicComponent):
@@ -9,14 +9,14 @@ class Buffer(AtomicComponent):
 
     def __init__(self, dictionary):
         super(Buffer, self).__init__(dictionary)
-        self.dictionary = dictionary
-        self.tcomponent = 0
         self.q = 0
 
-    def delta_con(self, event):
-        print "Buffer : Conflit entre un delta_out et un delta_in "
-        self.delta_out(event)
-        pass
+    def delta_int(self):
+        if self.current_state == 1:
+            self.current_state = 2
+            self.tcomponent = 0
+            self.q = self.q - 1
+        print "\t\t\tBuffer: go to", self.current_state
 
     def delta_out(self, event):
         state = self.current_state
@@ -42,12 +42,9 @@ class Buffer(AtomicComponent):
                     self.tcomponent = 0
         print "\t\t\tBuffer: go to", self.current_state
 
-    def delta_int(self):
-        if self.current_state == 1:
-            self.current_state = 2
-            self.tcomponent = 0
-            self.q = self.q - 1
-        print "\t\t\tBuffer: go to", self.current_state
+    def delta_con(self, event):
+        print "Buffer : Conflit entre un delta_out et un delta_in "
+        self.delta_out(event)
 
     def lambda_out(self):
         next_state = self.dictionary.get_components("req")

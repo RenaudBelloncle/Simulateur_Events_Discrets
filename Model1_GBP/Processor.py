@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from AtomicComponent import AtomicComponent
-from Model.Event import Event
+from Event import Event
 
 
 class Processor(AtomicComponent):
@@ -9,8 +9,11 @@ class Processor(AtomicComponent):
     def __init__(self, dictionary):
         super(Processor, self).__init__(dictionary)
 
-    def delta_con(self, event):
-        self.delta_out(event)
+    def delta_int(self):
+        if self.current_state == 1:
+            self.current_state = 0
+            self.tcomponent = 0
+        print "\t\t\tProcessor: go to", self.current_state
 
     def delta_out(self, event):
         if self.current_state == 0:
@@ -18,11 +21,8 @@ class Processor(AtomicComponent):
             self.tcomponent = 0
         print "\t\t\tProcessor: go to", self.current_state
 
-    def delta_int(self):
-        if self.current_state == 1:
-            self.current_state = 0
-            self.tcomponent = 0
-        print "\t\t\tProcessor: go to", self.current_state
+    def delta_con(self, event):
+        self.delta_out(event)
 
     def lambda_out(self):
         next_state = self.dictionary.get_components("done")

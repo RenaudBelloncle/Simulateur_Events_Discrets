@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from Model.Buffer import Buffer
+from Model1_GBP.Buffer import Buffer
 
 
 class Simulator:
