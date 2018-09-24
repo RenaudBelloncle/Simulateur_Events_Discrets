@@ -19,14 +19,14 @@ class Simulator:
         print "\ttmin :", tmin
 
         imms = [c for c in self.components if c.get_ta() == tmin]
-        print "\timms :", [c.__class__.__name__ for c in imms]
+        print "\tImminent Components :", [c.__class__.__name__ for c in imms]
 
         return tmin, imms
 
     def process_time(self, tmin, imms):
         impact_event = [i.lambda_out() for i in imms]
         impact = [ie[0] for ie in impact_event]
-        print "\t\timpact :", [c.__class__.__name__ for c in impact]
+        print "\tImpacted Components :", [c.__class__.__name__ for c in impact]
 
         for c in self.components:
             if (c not in impact) and (c in imms):
@@ -46,10 +46,10 @@ class Simulator:
         arg_in_time = [[0], [0]]
 
         while t < self.tfinal:
-            print "Init Etape", t, "/", self.tfinal
+            print "State initialisation -", t, "/", self.tfinal
             tmin, imms = self.init_step()
 
-            print "\tEtape", t + tmin, "/", self.tfinal
+            print "State process -", t + tmin, "/", self.tfinal
             self.process_time(tmin, imms)
 
             arg_in_time[0].append(t + tmin)

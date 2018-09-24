@@ -16,7 +16,7 @@ class Buffer(AtomicComponent):
             self.current_state = 2
             self.tcomponent = 0
             self.q = self.q - 1
-        print "\t\t\tBuffer: go to", self.current_state
+        print "\tBuffer: go to", self.current_state
 
     def delta_out(self, event):
         state = self.current_state
@@ -40,16 +40,16 @@ class Buffer(AtomicComponent):
                 else:
                     self.current_state = 1
                     self.tcomponent = 0
-        print "\t\t\tBuffer: go to", self.current_state
+        print "\tBuffer: go to", self.current_state
 
     def delta_con(self, event):
-        print "Buffer : Conflit entre un delta_out et un delta_in "
+        print "\tBuffer : Conflit entre un delta_out et un delta_in "
         self.delta_out(event)
 
     def lambda_out(self):
         next_state = self.dictionary.get_components("req")
         event = Event("req", "")
-        print "\t\t\tBuffer: send", event.name, "to", next_state.__class__.__name__
+        print "\tBuffer: send", event.name, "to", next_state.__class__.__name__
         return [self.dictionary.get_components("req"), event]
 
     def get_ta(self):
