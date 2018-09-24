@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from AtomicComponent import AtomicComponent
+from Model.Event import Event
 
 
 class Buffer(AtomicComponent):
@@ -15,6 +16,7 @@ class Buffer(AtomicComponent):
         self.q = 0
 
     def delta_con(self, event):
+        print "Buffer : Conflit entre un delta_out et un delta_in "
         self.delta_out(event)
         pass
 
@@ -23,27 +25,36 @@ class Buffer(AtomicComponent):
         if state == 0:
             self.current_state = 1
             self.q += 1
+            self.tcomponent = 0
         elif state == 1:
             self.current_state = 1
             self.q += 1
+            self.tcomponent = 0
         elif state == 2:
-            if event.get_name() == "job":
+            if event[0].get_name() == "job":
                 self.current_state = 2
                 self.q += 1
+                self.tcomponent = 0
             else:
                 if self.q == 0:
                     self.current_state = 0
+                    self.tcomponent = 0
                 else:
                     self.current_state = 1
+                    self.tcomponent = 0
+        print "\t\t\tBuffer: go to", self.current_state
 
     def delta_int(self):
         if self.current_state == 1:
             self.current_state = 2
-        else:
-            pass
+            self.tcomponent = 0
+        print "\t\t\tBuffer: go to", self.current_state
 
     def lambda_out(self):
-        return self.dictionary.get_components("req")
+        next_state = self.dictionary.get_components("req")
+        event = Event("req", "")
+        print "\t\t\tBuffer: send", event.name, "to", next_state.__class__.__name__
+        return [self.dictionary.get_components("req"), event]
 
     def get_ta(self):
         if self.current_state == 0:
@@ -52,3 +63,9 @@ class Buffer(AtomicComponent):
             return 0
         elif self.current_state == 2:
             return float("inf")
+
+    def increase_time(self, t):
+        self.tcomponent = self.tcomponent + t
+
+    def get_q(self):
+        return self.q
