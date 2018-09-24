@@ -21,7 +21,7 @@ class Step(AtomicComponent):
             event = Event("step", self.xi)
             return [self.dictionary.get_components("step"), event]
         elif self.current_state == 1:
-            event = Event("step", self.xf)
+            event = Event("step", self.xf - self.xi)
             return [self.dictionary.get_components("step"), event]
 
     def get_ta(self):

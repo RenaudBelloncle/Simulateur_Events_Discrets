@@ -1,13 +1,12 @@
 # coding=utf-8
+import numpy as np
+
 from AtomicComponent import AtomicComponent
 from Event import Event
 
 
 class Adder(AtomicComponent):
-    e1 = None
-    e2 = None
-    e3 = None
-    e4 = None
+    s = None
 
     def __init__(self, dictionary):
         super(Adder, self).__init__(dictionary)
@@ -16,7 +15,7 @@ class Adder(AtomicComponent):
         self.tcomponent += t
 
     def lambda_out(self):
-        event = Event("adder", self.e1 + self.e2 + self.e3 + self.e4)
+        event = Event("adder", self.s)
         return [self.dictionary.get_components("adder"), event]
 
     def get_ta(self):
@@ -32,9 +31,11 @@ class Adder(AtomicComponent):
     def delta_out(self, event):
         if self.current_state == 0:
             self.current_state = 1
+            self.s = self.s + np.sum([e.data for e in event])
             self.tcomponent = 0
         elif self.current_state == 1:
             self.current_state = 1
+            self.s = self.s + np.sum([e.data for e in event])
             self.tcomponent = 0
 
     def delta_int(self):

@@ -1,7 +1,7 @@
 # coding=utf-8
 import matplotlib.pyplot as plt
 
-from Model1_GBP import simulator
+from Model2_EquaDiffEuler import simulator
 
 if __name__ == '__main__':
     print "Simulateur à évènements discrets de systèmes hybrides"
