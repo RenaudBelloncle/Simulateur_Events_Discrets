@@ -13,7 +13,7 @@ class Generator(AtomicComponent):
         self.dictionary = dictionary
         self.tcomponent = 0
 
-    def delta_con(self):
+    def delta_con(self, event):
         pass
 
     def delta_out(self, event):

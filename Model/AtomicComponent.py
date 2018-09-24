@@ -20,7 +20,7 @@ class AtomicComponent:
         pass
 
     @abstractmethod
-    def delta_con(self):
+    def delta_con(self, event):
         pass
 
     @abstractmethod

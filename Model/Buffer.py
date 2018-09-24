@@ -14,8 +14,8 @@ class Buffer(AtomicComponent):
         self.tcomponent = 0
         self.q = 0
 
-    def delta_con(self):
-        # TODO : Réfléchir à comment implémenter le delta_con
+    def delta_con(self, event):
+        self.delta_out(event)
         pass
 
     def delta_out(self, event):

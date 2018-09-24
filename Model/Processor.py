@@ -11,7 +11,7 @@ class Processor(AtomicComponent):
         super(Processor, self).__init__()
         self.dictionary = dictionary
 
-    def delta_con(self):
+    def delta_con(self, event):
         pass
 
     def delta_out(self, event):
