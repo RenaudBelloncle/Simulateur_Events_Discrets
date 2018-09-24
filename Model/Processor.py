@@ -1,19 +1,20 @@
 # coding=utf-8
 
 from AtomicComponent import AtomicComponent
-from Model import Dictionary
 
 
 class Processor(AtomicComponent):
+    dictionary = None
     tcomponent = None
 
-    def __init__(self):
-        pass
+    def __init__(self, dictionary):
+        super(Processor, self).__init__()
+        self.dictionary = dictionary
 
     def delta_con(self):
         pass
 
-    def delta_out(self):
+    def delta_out(self, event):
         if self.current_state == 0:
             self.current_state = 1
 
@@ -22,7 +23,7 @@ class Processor(AtomicComponent):
             self.current_state = 0
 
     def lambda_out(self):
-        return Dictionary.get_components("Done")
+        return self.dictionary.get_components("Done")
 
     def get_ta(self):
         if self.current_state == 0:

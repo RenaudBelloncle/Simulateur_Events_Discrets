@@ -16,7 +16,7 @@ class AtomicComponent:
         pass
 
     @abstractmethod
-    def delta_out(self):
+    def delta_out(self, event):
         pass
 
     @abstractmethod

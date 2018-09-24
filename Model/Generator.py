@@ -1,26 +1,29 @@
 # coding=utf-8
 
 from AtomicComponent import AtomicComponent
-from Dictionary import Dictionary
 
 
 class Generator(AtomicComponent):
+
+    dictionary = None
     tcomponent = None
 
-    def __init__(self):
+    def __init__(self, dictionary):
+        super(Generator, self).__init__()
+        self.dictionary = dictionary
         self.tcomponent = 0
 
     def delta_con(self):
         pass
 
-    def delta_out(self):
+    def delta_out(self, event):
         pass
 
     def delta_int(self):
         self.current_state = 0
 
     def lambda_out(self):
-        return Dictionary.get_components("job")
+        return self.dictionary.get_components("job")
 
     def get_ta(self):
         return 2.0

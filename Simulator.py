@@ -1,5 +1,6 @@
 # coding=utf-8
 
+
 class Simulator:
     tfinal = None
     components = None
@@ -14,5 +15,5 @@ class Simulator:
     def process_time(self):
         pass
 
-    def simulation(self):
+    def run(self):
         pass

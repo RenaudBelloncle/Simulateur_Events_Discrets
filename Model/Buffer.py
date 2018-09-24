@@ -1,14 +1,16 @@
 # coding=utf-8
 
 from AtomicComponent import AtomicComponent
-from Model import Dictionary
 
 
 class Buffer(AtomicComponent):
+    dictionary = None
     tcomponent = None
     q = None
 
-    def __init__(self):
+    def __init__(self, dictionary):
+        super(Buffer, self).__init__()
+        self.dictionary = dictionary
         self.tcomponent = 0
         self.q = 0
 
@@ -32,7 +34,7 @@ class Buffer(AtomicComponent):
                 if self.q == 0:
                     self.current_state = 0
                 else:
-                    self.current.state = 1
+                    self.current_state = 1
 
     def delta_int(self):
         if self.current_state == 1:
@@ -41,7 +43,7 @@ class Buffer(AtomicComponent):
             pass
 
     def lambda_out(self):
-        return Dictionary.get_components("req")
+        return self.dictionary.get_components("req")
 
     def get_ta(self):
         if self.current_state == 0:

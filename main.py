@@ -7,12 +7,16 @@ from Simulator import Simulator
 
 if __name__ == '__main__':
     print "Simulateur à évènements discrets de systèmes hybrides"
+
     dictionary = Dictionary()
-    generator = Generator()
-    buff = Buffer()
-    processor = Processor()
+
+    generator = Generator(dictionary)
+    buff = Buffer(dictionary)
+    processor = Processor(dictionary)
+
     dictionary.add_link_component("job", buff)
     dictionary.add_link_component("req", processor)
     dictionary.add_link_component("done", buff)
-    simulator = Simulator(10, [generator, buff, processor])
 
+    simulator = Simulator(10, [generator, buff, processor])
+    simulator.run()
