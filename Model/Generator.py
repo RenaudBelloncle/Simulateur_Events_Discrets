@@ -5,13 +5,9 @@ from Model.Event import Event
 
 
 class Generator(AtomicComponent):
-    dictionary = None
-    tcomponent = None
 
     def __init__(self, dictionary):
-        super(Generator, self).__init__()
-        self.dictionary = dictionary
-        self.tcomponent = 0
+        super(Generator, self).__init__(dictionary)
 
     def delta_con(self, event):
         self.delta_out(event)

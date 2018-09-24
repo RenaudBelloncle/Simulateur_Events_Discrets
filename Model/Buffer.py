@@ -5,12 +5,10 @@ from Model.Event import Event
 
 
 class Buffer(AtomicComponent):
-    dictionary = None
-    tcomponent = None
     q = None
 
     def __init__(self, dictionary):
-        super(Buffer, self).__init__()
+        super(Buffer, self).__init__(dictionary)
         self.dictionary = dictionary
         self.tcomponent = 0
         self.q = 0
@@ -48,6 +46,7 @@ class Buffer(AtomicComponent):
         if self.current_state == 1:
             self.current_state = 2
             self.tcomponent = 0
+            self.q = self.q - 1
         print "\t\t\tBuffer: go to", self.current_state
 
     def lambda_out(self):
