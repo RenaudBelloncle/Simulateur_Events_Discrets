@@ -19,7 +19,7 @@ class Simulator:
     def run(self):
         t = 0.0
         buf = [c for c in self.components if isinstance(c, Buffer)][0]
-        q_in_time = [[t, buf.get_q()]]
+        q_in_time = [[0], [0]]
 
         while t < self.tfinal:
             print "Init Etape", t, "/", self.tfinal
@@ -30,9 +30,6 @@ class Simulator:
 
             imms = [c for c in self.components if c.get_ta() == tmin]
             print "\timms :", [c.__class__.__name__ for c in imms]
-
-            q_in_time.append([t+tmin, buf.get_q()])
-            print "\t q:", q_in_time
 
             print "\tEtape", t + tmin, "/", self.tfinal
             impact_event = [i.lambda_out() for i in imms]
@@ -50,5 +47,9 @@ class Simulator:
                     c.delta_con(event)
                 else:
                     c.increase_time(tmin)
+            q_in_time[0].append(t + tmin)
+            q_in_time[1].append(buf.get_q())
 
             t = t + tmin
+
+        return q_in_time
