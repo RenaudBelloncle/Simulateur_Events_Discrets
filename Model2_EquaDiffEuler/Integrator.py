@@ -11,6 +11,7 @@ class Integrator(AtomicComponent):
 
     def __init__(self, dictionary, x, h):
         super(Integrator, self).__init__(dictionary)
+        self.xdot = 0.0
         self.x = x
         self.h = h
         self.sigma = h
@@ -24,7 +25,7 @@ class Integrator(AtomicComponent):
 
     def get_ta(self):
         if self.current_state == 0:
-            return self.h - self.sigma
+            return self.h - self.tcomponent
 
     def delta_con(self, event):
         print "Adder : On a reçu de nouvelles valeurs alors qu'on peut envoyer"
@@ -35,7 +36,7 @@ class Integrator(AtomicComponent):
             self.current_state = 0
             self.sigma = self.h - self.tcomponent
             self.x = self.x + self.tcomponent * self.xdot
-            self.xdot = event.data
+            self.xdot = event[0].data
 
     def delta_int(self):
         if self.current_state == 0:

@@ -14,4 +14,4 @@ dictionary.add_link_component("job", buff)
 dictionary.add_link_component("req", processor)
 dictionary.add_link_component("done", buff)
 
-simulator = Simulator(20, [generator, buff, processor])
+simulator_GBP = Simulator(20, [generator, buff, processor])

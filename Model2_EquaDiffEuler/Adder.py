@@ -10,6 +10,7 @@ class Adder(AtomicComponent):
 
     def __init__(self, dictionary):
         super(Adder, self).__init__(dictionary)
+        self.s = 0
 
     def increase_time(self, t):
         self.tcomponent += t

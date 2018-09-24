@@ -26,7 +26,7 @@ class Step(AtomicComponent):
 
     def get_ta(self):
         if self.current_state == 0:
-            return 0
+            return 0.0
         elif self.current_state == 1:
             return self.ts
         else:

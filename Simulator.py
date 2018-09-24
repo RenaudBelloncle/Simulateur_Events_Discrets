@@ -42,7 +42,7 @@ class Simulator:
 
     def run(self):
         t = 0.0
-        buf = [c for c in self.components if isinstance(c, Buffer)][0]
+        # buf = [c for c in self.components if isinstance(c, Buffer)][0]
         arg_in_time = [[0], [0]]
 
         while t < self.tfinal:
@@ -52,8 +52,8 @@ class Simulator:
             print "State process -", t + tmin, "/", self.tfinal
             self.process_time(tmin, imms)
 
-            arg_in_time[0].append(t + tmin)
-            arg_in_time[1].append(buf.get_q())
+            # arg_in_time[0].append(t + tmin)
+            # arg_in_time[1].append(buf.get_q())
 
             t = t + tmin
 
