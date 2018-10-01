@@ -50,7 +50,7 @@ class Buffer(AtomicComponent):
         next_state = self.dictionary.get_components("req")
         event = Event("req", "")
         print "\tBuffer: send", event.name, "to", next_state.__class__.__name__
-        return [self.dictionary.get_components("req"), event]
+        return [[c, event] for c in self.dictionary.get_components("sortie")]
 
     def get_ta(self):
         if self.current_state == 0:

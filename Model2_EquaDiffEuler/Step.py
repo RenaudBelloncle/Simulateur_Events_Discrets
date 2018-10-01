@@ -19,10 +19,10 @@ class Step(AtomicComponent):
     def lambda_out(self):
         if self.current_state == 0:
             event = Event("step", self.xi)
-            return [self.dictionary.get_components("step"), event]
+            return [[c, event] for c in self.dictionary.get_components("step")]
         elif self.current_state == 1:
             event = Event("step", self.xf - self.xi)
-            return [self.dictionary.get_components("step"), event]
+            return [[c, event] for c in self.dictionary.get_components("step")]
 
     def get_ta(self):
         if self.current_state == 0:

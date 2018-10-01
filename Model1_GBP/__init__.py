@@ -10,8 +10,8 @@ generator = Generator("generator", dictionary)
 buff = Buffer("buffer", dictionary)
 processor = Processor("processor", dictionary)
 
-dictionary.add_link_component("job", buff)
-dictionary.add_link_component("req", processor)
-dictionary.add_link_component("done", buff)
+dictionary.add_link_component("job", [buff])
+dictionary.add_link_component("req", [processor])
+dictionary.add_link_component("done", [buff])
 
 simulator_GBP = Simulator(20, [generator, buff, processor])

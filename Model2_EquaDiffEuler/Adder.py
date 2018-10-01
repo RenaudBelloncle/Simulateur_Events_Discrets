@@ -17,7 +17,7 @@ class Adder(AtomicComponent):
 
     def lambda_out(self):
         event = Event("adder", self.s)
-        return [self.dictionary.get_components("adder"), event]
+        return [[c, event] for c in self.dictionary.get_components("adder")]
 
     def get_ta(self):
         if self.current_state == 0:

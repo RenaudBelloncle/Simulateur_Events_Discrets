@@ -28,7 +28,7 @@ class Processor(AtomicComponent):
         next_state = self.dictionary.get_components("done")
         event = Event("done", "")
         print "\tProcessor: send", event.name, "to", next_state.__class__.__name__
-        return [next_state, event]
+        return [[c, event] for c in self.dictionary.get_components("sortie")]
 
     def get_ta(self):
         if self.current_state == 0:
