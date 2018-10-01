@@ -7,8 +7,8 @@ from Event import Event
 class Buffer(AtomicComponent):
     q = None
 
-    def __init__(self, dictionary):
-        super(Buffer, self).__init__(dictionary)
+    def __init__(self, name, dictionary):
+        super(Buffer, self).__init__(name, dictionary)
         self.q = 0
 
     def delta_int(self):

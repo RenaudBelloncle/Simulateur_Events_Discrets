@@ -8,8 +8,8 @@ from Event import Event
 class Adder(AtomicComponent):
     s = None
 
-    def __init__(self, dictionary):
-        super(Adder, self).__init__(dictionary)
+    def __init__(self, name, dictionary):
+        super(Adder, self).__init__(name, dictionary)
         self.s = 0
 
     def increase_time(self, t):

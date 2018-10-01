@@ -2,8 +2,6 @@
 
 import numpy as np
 
-from Model1_GBP.Buffer import Buffer
-
 
 class Simulator:
     tfinal = None
@@ -19,14 +17,14 @@ class Simulator:
         print "\ttmin :", tmin
 
         imms = [c for c in self.components if c.get_ta() == tmin]
-        print "\tImminent Components :", [c.__class__.__name__ for c in imms]
+        print "\tImminent Components :", [c.name for c in imms]
 
         return tmin, imms
 
     def process_time(self, tmin, imms):
         impact_event = [i.lambda_out() for i in imms]
         impact = [ie[0] for ie in impact_event]
-        print "\tImpacted Components :", [c.__class__.__name__ for c in impact]
+        print "\tImpacted Components :", np.unique([c.name for c in impact])
 
         for c in self.components:
             if (c not in impact) and (c in imms):
@@ -41,8 +39,11 @@ class Simulator:
                 c.increase_time(tmin)
 
     def run(self):
+        from Model2_EquaDiffEuler import Integrator
+
         t = 0.0
         # buf = [c for c in self.components if isinstance(c, Buffer)][0]
+        integrator = [c for c in self.components if isinstance(c, Integrator)][0]
         arg_in_time = [[0], [0]]
 
         while t < self.tfinal:
@@ -54,6 +55,8 @@ class Simulator:
 
             # arg_in_time[0].append(t + tmin)
             # arg_in_time[1].append(buf.get_q())
+            arg_in_time[0].append(t + tmin)
+            arg_in_time[1].append(integrator.get_x())
 
             t = t + tmin
 

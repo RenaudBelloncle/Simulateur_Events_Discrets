@@ -9,8 +9,8 @@ class Integrator(AtomicComponent):
     h = None
     sigma = None
 
-    def __init__(self, dictionary, x, h):
-        super(Integrator, self).__init__(dictionary)
+    def __init__(self, name, dictionary, x, h):
+        super(Integrator, self).__init__(name, dictionary)
         self.xdot = 0.0
         self.x = x
         self.h = h
@@ -44,3 +44,6 @@ class Integrator(AtomicComponent):
             self.tcomponent = 0
             self.x = self.x + self.sigma * self.xdot
             self.sigma = self.h
+
+    def get_x(self):
+        return self.x

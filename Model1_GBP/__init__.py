@@ -6,9 +6,9 @@ from Simulator import Simulator
 
 dictionary = Dictionary()
 
-generator = Generator(dictionary)
-buff = Buffer(dictionary)
-processor = Processor(dictionary)
+generator = Generator("generator", dictionary)
+buff = Buffer("buffer", dictionary)
+processor = Processor("processor", dictionary)
 
 dictionary.add_link_component("job", buff)
 dictionary.add_link_component("req", processor)

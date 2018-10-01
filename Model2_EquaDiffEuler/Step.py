@@ -7,8 +7,8 @@ class Step(AtomicComponent):
     xf = None
     ts = None
 
-    def __init__(self, dictionary, xi, xf, ts):
-        super(Step, self).__init__(dictionary)
+    def __init__(self, name, dictionary, xi, xf, ts):
+        super(Step, self).__init__(name, dictionary)
         self.xi = xi
         self.xf = xf
         self.ts = ts
@@ -28,7 +28,7 @@ class Step(AtomicComponent):
         if self.current_state == 0:
             return 0.0
         elif self.current_state == 1:
-            return self.ts
+            return self.ts - self.tcomponent
         else:
             return float("inf")
 

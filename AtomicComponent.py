@@ -5,12 +5,14 @@ from abc import ABCMeta, abstractmethod
 
 class AtomicComponent:
     __metaclass__ = ABCMeta
+    name = None
     current_state = None
     dictionary = None
     tcomponent = None
 
     @abstractmethod
-    def __init__(self, dictionary):
+    def __init__(self, name, dictionary):
+        self.name = name
         self.current_state = 0
         self.dictionary = dictionary
         self.tcomponent = 0
