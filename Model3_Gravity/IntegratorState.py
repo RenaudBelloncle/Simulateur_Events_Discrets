@@ -22,8 +22,12 @@ class IntegratorState(AtomicComponent):
         self.tcomponent += t
 
     def lambda_out(self):
-        event = Event("sortie", self.q + self.delta_q * np.sign(self.qdot))
-        return [[c, event] for c in self.dictionary.get_components("sortie")]
+        if self.name == "integratorStateVit":
+            event_name = "vit"
+        else:
+            event_name = "pos"
+        event = Event(event_name, self.q + self.delta_q * np.sign(self.qdot))
+        return [[c, event] for c in self.dictionary.get_components(event_name)]
 
     def get_ta(self):
         if self.current_state == 0:
@@ -35,13 +39,13 @@ class IntegratorState(AtomicComponent):
     def delta_out(self, event):
         if self.current_state == 0:
             self.current_state = 0
-            self.tcomponent = 0
             ql = self.q
             self.q = self.q + self.tcomponent * self.qdot
             self.qdot = event[0].data
             self.sigma = (self.delta_q - np.abs(self.q - ql)) / np.abs(self.qdot)
+            self.tcomponent = 0
 
-    def delta_int(self):
+    def delta_in(self):
         if self.current_state == 0:
             self.current_state = 0
             self.tcomponent = 0

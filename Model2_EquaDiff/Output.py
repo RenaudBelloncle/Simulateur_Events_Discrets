@@ -6,7 +6,7 @@ class Output(AtomicComponent):
     def __init__(self, name, dictionary):
         super(Output, self).__init__(name, dictionary)
 
-    def delta_int(self):
+    def delta_in(self):
         pass
 
     def delta_out(self, event):

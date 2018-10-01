@@ -9,7 +9,7 @@ class Generator(AtomicComponent):
     def __init__(self, name, dictionary):
         super(Generator, self).__init__(name, dictionary)
 
-    def delta_int(self):
+    def delta_in(self):
         self.current_state = 0
         self.tcomponent = 0
         print "\tGenerator: go to", self.current_state

@@ -37,7 +37,7 @@ class IntegratorTime(AtomicComponent):
             self.x = self.x + self.tcomponent * self.xdot
             self.xdot = event[0].data
 
-    def delta_int(self):
+    def delta_in(self):
         if self.current_state == 0:
             self.current_state = 0
             self.tcomponent = 0

@@ -9,7 +9,7 @@ class Processor(AtomicComponent):
     def __init__(self, name, dictionary):
         super(Processor, self).__init__(name, dictionary)
 
-    def delta_int(self):
+    def delta_in(self):
         if self.current_state == 1:
             self.current_state = 0
             self.tcomponent = 0

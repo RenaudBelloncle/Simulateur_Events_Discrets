@@ -38,7 +38,7 @@ class Step(AtomicComponent):
     def delta_out(self, event):
         pass
 
-    def delta_int(self):
+    def delta_in(self):
         if self.current_state == 0:
             self.current_state = 1
             self.tcomponent = 0

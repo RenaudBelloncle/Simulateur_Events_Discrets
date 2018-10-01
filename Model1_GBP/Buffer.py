@@ -11,7 +11,7 @@ class Buffer(AtomicComponent):
         super(Buffer, self).__init__(name, dictionary)
         self.q = 0
 
-    def delta_int(self):
+    def delta_in(self):
         if self.current_state == 1:
             self.current_state = 2
             self.tcomponent = 0

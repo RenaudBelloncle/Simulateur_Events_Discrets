@@ -39,7 +39,7 @@ class Adder(AtomicComponent):
             self.s = self.s + np.sum([e.data for e in event])
             self.tcomponent = 0
 
-    def delta_int(self):
+    def delta_in(self):
         if self.current_state == 1:
             self.current_state = 0
             self.tcomponent = 0

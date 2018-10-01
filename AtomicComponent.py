@@ -18,7 +18,7 @@ class AtomicComponent:
         self.tcomponent = 0
 
     @abstractmethod
-    def delta_int(self):
+    def delta_in(self):
         pass
 
     @abstractmethod
