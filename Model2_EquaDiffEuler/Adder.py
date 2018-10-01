@@ -43,3 +43,6 @@ class Adder(AtomicComponent):
         if self.current_state == 1:
             self.current_state = 0
             self.tcomponent = 0
+
+    def get_s(self):
+        return self.s

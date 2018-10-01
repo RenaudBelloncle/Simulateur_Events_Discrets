@@ -10,4 +10,5 @@ if __name__ == '__main__':
     # logs = simulator_GBP.run()
     logs = simulator_EquaDiffEuler.run()
     plt.plot(logs[0], logs[1], drawstyle="steps-post")
+    plt.plot(logs[2], logs[3], drawstyle="steps-post")
     plt.show()
