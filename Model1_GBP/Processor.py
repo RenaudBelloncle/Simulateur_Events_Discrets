@@ -35,6 +35,3 @@ class Processor(AtomicComponent):
             return float("inf")
         else:
             return 3 - self.tcomponent
-
-    def increase_time(self, t):
-        self.tcomponent = self.tcomponent + t

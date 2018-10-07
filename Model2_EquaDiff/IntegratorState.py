@@ -18,19 +18,12 @@ class IntegratorState(AtomicComponent):
         self.delta_q = delta_q
         self.sigma = float("inf")
 
-    def increase_time(self, t):
-        self.tcomponent += t
-
-    def lambda_out(self):
-        event = Event("sortie", self.q + self.delta_q * np.sign(self.qdot))
-        return [[c, event] for c in self.dictionary.get_components("sortie")]
-
-    def get_ta(self):
+    def delta_in(self):
         if self.current_state == 0:
-            return self.sigma - self.tcomponent
-
-    def delta_con(self, event):
-        self.delta_out(event)
+            self.current_state = 0
+            self.tcomponent = 0
+            self.q = self.q + self.delta_q * np.sign(self.qdot)
+            self.sigma = self.delta_q / np.abs(self.qdot)
 
     def delta_out(self, event):
         if self.current_state == 0:
@@ -41,12 +34,16 @@ class IntegratorState(AtomicComponent):
             self.qdot = event[0].data
             self.sigma = (self.delta_q - np.abs(self.q - ql)) / np.abs(self.qdot)
 
-    def delta_in(self):
+    def delta_con(self, event):
+        self.delta_out(event)
+
+    def get_ta(self):
         if self.current_state == 0:
-            self.current_state = 0
-            self.tcomponent = 0
-            self.q = self.q + self.delta_q * np.sign(self.qdot)
-            self.sigma = self.delta_q / np.abs(self.qdot)
+            return self.sigma - self.tcomponent
+
+    def lambda_out(self):
+        event = Event("sortie", self.q + self.delta_q * np.sign(self.qdot))
+        return [[c, event] for c in self.dictionary.get_components("sortie")]
 
     def get_q(self):
         return self.q

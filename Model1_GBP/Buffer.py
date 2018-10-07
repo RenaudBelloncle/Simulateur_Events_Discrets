@@ -60,8 +60,5 @@ class Buffer(AtomicComponent):
         elif self.current_state == 2:
             return float("inf")
 
-    def increase_time(self, t):
-        self.tcomponent = self.tcomponent + t
-
     def get_q(self):
         return self.q

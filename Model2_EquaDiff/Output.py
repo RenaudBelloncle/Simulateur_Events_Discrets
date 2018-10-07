@@ -20,6 +20,3 @@ class Output(AtomicComponent):
 
     def lambda_out(self):
         return []
-
-    def increase_time(self, t):
-        pass

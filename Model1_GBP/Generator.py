@@ -28,6 +28,3 @@ class Generator(AtomicComponent):
 
     def get_ta(self):
         return 2.0 - self.tcomponent
-
-    def increase_time(self, t):
-        self.tcomponent = self.tcomponent + t
