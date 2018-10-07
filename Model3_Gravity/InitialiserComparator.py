@@ -43,6 +43,3 @@ class InitialiserComparator(AtomicComponent):
         elif self.current_state == 2:
             event = Event("v", self.coef)
             return [[c, event] for c in self.dictionary.get_components("v")]
-
-    def increase_time(self, t):
-        self.tcomponent += t

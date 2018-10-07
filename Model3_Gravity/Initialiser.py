@@ -30,6 +30,3 @@ class Initialiser(AtomicComponent):
         if self.current_state == 0:
             event = Event("h", self.init)
             return [[c, event] for c in self.dictionary.get_components("h")]
-
-    def increase_time(self, t):
-        self.tcomponent += t

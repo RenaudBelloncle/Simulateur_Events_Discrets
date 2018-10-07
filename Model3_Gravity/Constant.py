@@ -9,13 +9,16 @@ class Constant(AtomicComponent):
         super(Constant, self).__init__(name, dictionary)
         self.xi = xi
 
-    def increase_time(self, t):
-        self.tcomponent += t
-
-    def lambda_out(self):
+    def delta_in(self):
         if self.current_state == 0:
-            event = Event("acc", self.xi)
-            return [[c, event] for c in self.dictionary.get_components("acc")]
+            self.current_state = 1
+            self.tcomponent = 0
+
+    def delta_out(self, event):
+        pass
+
+    def delta_con(self, event):
+        self.delta_out(event)
 
     def get_ta(self):
         if self.current_state == 0:
@@ -23,13 +26,7 @@ class Constant(AtomicComponent):
         else:
             return float("inf")
 
-    def delta_con(self, event):
-        pass
-
-    def delta_out(self, event):
-        pass
-
-    def delta_in(self):
+    def lambda_out(self):
         if self.current_state == 0:
-            self.current_state = 1
-            self.tcomponent = 0
+            event = Event("acc", self.xi)
+            return [[c, event] for c in self.dictionary.get_components("acc")]
