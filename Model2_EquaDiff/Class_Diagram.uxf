@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>384</x>
+      <y>208</y>
+      <w>272</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>/AtomicComponent/
+--
+name: string
+current_state: int
+dictionary: Dictionary
+tcomponent: float
+--
+/__init__(name: string, dictionary: Dictionary)/
+/delta_int()/
+/delta_out(event: list&lt;Event&gt;)/
+/delta_con(event: list&lt;Event&gt;)/
+/get_ta(): float/
+/lambda_out(): list&lt;AtomicComponent, Event&gt;/
+increase_time(t: float)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>376</y>
+      <w>272</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Step
+--
+xi: int
+xf: int
+ts: float
+--
+__init__(name: string, dictionary: Dictionary)
+delta_int()
+delta_out(event: list&lt;Event&gt;)
+delta_con(event: list&lt;Event&gt;)
+get_ta(): float
+lambda_out(): list&lt;AtomicComponent, Event&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>296</x>
+      <y>480</y>
+      <w>272</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>Adder
+--
+s: int
+--
+__init__(name: string, dictionary: Dictionary)
+delta_int()
+delta_out(event: list&lt;Event&gt;)
+delta_con(event: list&lt;Event&gt;)
+get_ta(): float
+lambda_out(): list&lt;AtomicComponent, Event&gt;
+get_s(): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>592</x>
+      <y>480</y>
+      <w>344</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>IntegratorTime
+--
+xdot: int
+x: float
+h: float
+sigma: float
+--
+__init__(name: string, dictionary: Dictionary, x: float, h: float)
+delta_int()
+delta_out(event: list&lt;Event&gt;)
+delta_con(event: list&lt;Event&gt;)
+get_ta(): float
+lambda_out(): list&lt;AtomicComponent, Event&gt;
+get_x(): float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>376</y>
+      <w>24</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>376</y>
+      <w>208</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;240.0;30.0;240.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>376</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>230.0;10.0;230.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>112</x>
+      <y>8</y>
+      <w>336</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Simulator
+--
+tfinal: float
+components: list&lt;AtomicComponents&gt;
+--
+__init__(tfinal: float, components: list&lt;AtomicComponents&gt;)
+init_step(): (float, list&lt;AtomicComponents&gt;)
+process_time(float, list&lt;AtomicComponents&gt;)
+run(): list&lt;(int, int)&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>392</x>
+      <y>112</y>
+      <w>88</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1..n
+m2=1
+components</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>24</y>
+      <w>424</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;unic&gt;&gt;
+Dictionary
+--
+dictionary: dict
+--
+__init__()
+get_components(event_name: string): list&lt;AtomicComponent&gt;
+add_link_component(event_name: string, component: AtomicComponent)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>296</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>112</x>
+      <y>232</y>
+      <w>184</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Event
+--
+name: string
+data: int
+--
+__init__(name: string, data: int)
+get_name(): string
+get_data(): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>568</x>
+      <y>112</y>
+      <w>48</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>688</x>
+      <y>280</y>
+      <w>384</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>IntegratorState
+--
+qdot: int
+q: float
+delta_q: float
+sigma: float
+--
+__init__(name: string, dictionary: Dictionary, q: float, delta_q: float)
+delta_int()
+delta_out(event: list&lt;Event&gt;)
+delta_con(event: list&lt;Event&gt;)
+get_ta(): float
+lambda_out(): list&lt;AtomicComponent, Event&gt;
+get_q(): float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>376</y>
+      <w>264</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;310.0;30.0</additional_attributes>
+  </element>
+</diagram>
