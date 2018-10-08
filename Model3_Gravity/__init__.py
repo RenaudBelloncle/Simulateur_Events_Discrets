@@ -10,10 +10,10 @@ from Simulator import Simulator
 dico = Dictionary()
 
 c = Constant("constant", dico, -9.81)
-integrator_vit = IntegratorState("integratorStateVit", dico, 0.1)
-integrator_pos = IntegratorState("integratorStatePos", dico, 0.001)
+integrator_vit = IntegratorState("integratorStateVit", dico, 0.001)
+integrator_pos = IntegratorState("integratorStatePos", dico, 0.0001)
 pos_initialiser = Initialiser("posInitialiser", dico, 10.0)
-vit_initialiser = InitialiserComparator("vitInitialiser", dico, 0.0, 0.8)
+vit_initialiser = InitialiserComparator("vitInitialiser", dico, 0.0, 0.8, 0.0001)
 
 dico.add_link_component("acc", [integrator_vit])
 dico.add_link_component("vit", [integrator_pos])

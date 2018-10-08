@@ -5,63 +5,62 @@
     <id>UMLClass</id>
     <coordinates>
       <x>400</x>
-      <y>232</y>
+      <y>216</y>
       <w>272</w>
-      <h>160</h>
+      <h>176</h>
     </coordinates>
     <panel_attributes>/AtomicComponent/
 --
+name: string
 current_state: int
 dictionary: Dictionary
-tcomponent: int
+tcomponent: float
 --
-/__init__(dictionary: Dictionary)/
+/__init__(name: string, dictionary: Dictionary)/
 /delta_int()/
 /delta_out(event: list&lt;Event&gt;)/
 /delta_con(event: list&lt;Event&gt;)/
+/get_ta(): float/
 /lambda_out(): list&lt;AtomicComponent, Event&gt;/
-/get_ta()/
-/increase_time(t: int)/</panel_attributes>
+increase_time(t: float)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>112</x>
-      <y>424</y>
+      <y>448</y>
       <w>272</w>
-      <h>120</h>
+      <h>104</h>
     </coordinates>
     <panel_attributes>Generator
 --
-__init__(dictionary: Dictionary)
+__init__(name: string, dictionary: Dictionary)
 delta_int()
 delta_out(event: list&lt;Event&gt;)
 delta_con(event: list&lt;Event&gt;)
-lambda_out(): list&lt;AtomicComponent, Event&gt;
-get_ta()
-increase_time(t: int)</panel_attributes>
+get_ta(): float
+lambda_out(): list&lt;AtomicComponent, Event&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>400</x>
-      <y>424</y>
+      <y>448</y>
       <w>272</w>
-      <h>144</h>
+      <h>136</h>
     </coordinates>
     <panel_attributes>Buffer
 --
 q: int
 --
-__init__(dictionary: Dictionary)
+__init__(name: string, dictionary: Dictionary)
 delta_int()
 delta_out(event: list&lt;Event&gt;)
 delta_con(event: list&lt;Event&gt;)
+get_ta(): float
 lambda_out(): list&lt;AtomicComponent, Event&gt;
-get_ta()
-increase_time(t: int)
 get_q(): int</panel_attributes>
     <additional_attributes/>
   </element>
@@ -69,19 +68,18 @@ get_q(): int</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>688</x>
-      <y>424</y>
+      <y>448</y>
       <w>272</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>Processor
 --
-__init__(dictionary: Dictionary)
+__init__(name: string, dictionary: Dictionary)
 delta_int()
 delta_out(event: list&lt;Event&gt;)
 delta_con(event: list&lt;Event&gt;)
-lambda_out(): list&lt;AtomicComponent, Event&gt;
-get_ta()
-increase_time(t: int)</panel_attributes>
+get_ta(): float
+lambda_out(): list&lt;AtomicComponent, Event&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -90,10 +88,10 @@ increase_time(t: int)</panel_attributes>
       <x>456</x>
       <y>384</y>
       <w>24</w>
-      <h>56</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -101,10 +99,10 @@ increase_time(t: int)</panel_attributes>
       <x>456</x>
       <y>384</y>
       <w>288</w>
-      <h>56</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0;340.0;30.0;340.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;340.0;30.0;340.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -112,50 +110,50 @@ increase_time(t: int)</panel_attributes>
       <x>336</x>
       <y>384</y>
       <w>144</w>
-      <h>56</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>160.0;10.0;160.0;30.0;10.0;30.0;10.0;50.0</additional_attributes>
+    <additional_attributes>160.0;10.0;160.0;30.0;10.0;30.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>128</x>
-      <y>56</y>
+      <y>16</y>
       <w>336</w>
-      <h>96</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>Simulator
 --
-tfinal: int
+tfinal: float
+components: list&lt;AtomicComponents&gt;
 --
-__init__(tfinal: int, components: list&lt;AtomicComponents&gt;)
-find_tmin()
-process_time()
-simulation()
-</panel_attributes>
+__init__(tfinal: float, components: list&lt;AtomicComponents&gt;)
+init_step(): (float, list&lt;AtomicComponents&gt;)
+process_time(float, list&lt;AtomicComponents&gt;)
+run(): list&lt;(int, int)&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>408</x>
-      <y>144</y>
-      <w>96</w>
-      <h>104</h>
+      <y>120</y>
+      <w>88</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..n
 m2=1
-Components</panel_attributes>
-    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+components</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
-      <y>56</y>
-      <w>384</w>
+      <x>536</x>
+      <y>32</y>
+      <w>424</w>
       <h>96</h>
     </coordinates>
     <panel_attributes>&lt;&lt;unic&gt;&gt;
@@ -164,8 +162,8 @@ Dictionary
 dictionary: dict
 --
 __init__()
-get_components(event: string): list&lt;AtomicComponent&gt;
-add_link_component(event: string, component: AtomicComponent)</panel_attributes>
+get_components(event_name: string): list&lt;AtomicComponent&gt;
+add_link_component(event_name: string, component: AtomicComponent)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -187,7 +185,7 @@ m2=1</panel_attributes>
       <x>128</x>
       <y>240</y>
       <w>184</w>
-      <h>112</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Event
 --
@@ -196,22 +194,20 @@ data: int
 --
 __init__(name: string, data: int)
 get_name(): string
-get_data(): int
-set_data(n: string)</panel_attributes>
+get_data(): int</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>496</x>
-      <y>144</y>
-      <w>96</w>
-      <h>104</h>
+      <x>584</x>
+      <y>120</y>
+      <w>48</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..n
-m2=1
-Components</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
 </diagram>

@@ -14,6 +14,3 @@ class Event:
 
     def get_data(self):
         return self.data
-
-    def set_data(self, n):
-        self.name = n

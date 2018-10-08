@@ -20,11 +20,11 @@ class Generator(AtomicComponent):
     def delta_con(self, event):
         self.delta_out(event)
 
+    def get_ta(self):
+        return 2.0 - self.tcomponent
+
     def lambda_out(self):
         next_state = self.dictionary.get_components("job")
         event = Event("job", "")
         print "\tGenerator: send", event.name, "to", next_state.__class__.__name__
-        return [[c, event] for c in self.dictionary.get_components("sortie")]
-
-    def get_ta(self):
-        return 2.0 - self.tcomponent
+        return [[c, event] for c in self.dictionary.get_components("job")]

@@ -29,7 +29,8 @@ class Buffer(AtomicComponent):
             self.q += 1
             self.tcomponent = 0
         elif state == 2:
-            if event[0].get_name() == "job":
+            names = [e.get_name() for e in event]
+            if "job" in names:
                 self.current_state = 2
                 self.q += 1
                 self.tcomponent = 0
@@ -46,12 +47,6 @@ class Buffer(AtomicComponent):
         print "\tBuffer : Conflit entre un delta_out et un delta_in "
         self.delta_out(event)
 
-    def lambda_out(self):
-        next_state = self.dictionary.get_components("req")
-        event = Event("req", "")
-        print "\tBuffer: send", event.name, "to", next_state.__class__.__name__
-        return [[c, event] for c in self.dictionary.get_components("sortie")]
-
     def get_ta(self):
         if self.current_state == 0:
             return float("inf")
@@ -59,6 +54,12 @@ class Buffer(AtomicComponent):
             return 0
         elif self.current_state == 2:
             return float("inf")
+
+    def lambda_out(self):
+        next_state = self.dictionary.get_components("req")
+        event = Event("req", "")
+        print "\tBuffer: send", event.name, "to", next_state.__class__.__name__
+        return [[c, event] for c in self.dictionary.get_components("req")]
 
     def get_q(self):
         return self.q

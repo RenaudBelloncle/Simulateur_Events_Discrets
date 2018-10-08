@@ -36,12 +36,14 @@ class Simulator:
                 c.increase_time(tmin)
 
     def run(self):
-        from Model3_Gravity import IntegratorState
+        from Model1_GBP import Buffer
+        # from Model3_Gravity import IntegratorState
 
         t = 0.0
-        integrator_vit = [c for c in self.components if isinstance(c, IntegratorState)][0]
-        integrator_pos = [c for c in self.components if isinstance(c, IntegratorState) and c != integrator_vit][0]
-        arg_in_time = [[0], [0], [0], [0]]
+        buf = [c for c in self.components if isinstance(c, Buffer)][0]
+        # integrator_vit = [c for c in self.components if isinstance(c, IntegratorState)][0]
+        # integrator_pos = [c for c in self.components if isinstance(c, IntegratorState) and c != integrator_vit][0]
+        arg_in_time = [[], []]
 
         while t < self.tfinal:
             tmin, imms = self.init_step()
@@ -49,9 +51,11 @@ class Simulator:
             self.process_time(tmin, imms)
 
             arg_in_time[0].append(t + tmin)
-            arg_in_time[1].append(integrator_vit.get_q())
-            arg_in_time[2].append(t + tmin)
-            arg_in_time[3].append(integrator_pos.get_q())
+            arg_in_time[1].append(buf.get_q())
+            # arg_in_time[0].append(t + tmin)
+            # arg_in_time[1].append(integrator_vit.get_q())
+            # arg_in_time[2].append(t + tmin)
+            # arg_in_time[3].append(integrator_pos.get_q())
 
             t = t + tmin
 
