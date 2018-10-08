@@ -5,13 +5,13 @@ from Event import Event
 class InitialiserComparator(AtomicComponent):
     init = None
     coef = None
-    h = None
+    e = None
 
-    def __init__(self, name, dictionary, init, coef, h):
+    def __init__(self, name, dictionary, init, coef, e):
         super(InitialiserComparator, self).__init__(name, dictionary)
         self.init = init
         self.coef = coef
-        self.h = h
+        self.e = e
 
     def delta_in(self):
         if self.current_state == 0:
@@ -23,7 +23,7 @@ class InitialiserComparator(AtomicComponent):
 
     def delta_out(self, event):
         if self.current_state == 1:
-            if (event[0].data < self.h) and (event[0].data > -self.h):
+            if (event[0].data < self.e) and (event[0].data > -self.e):
                 self.current_state = 2
                 self.tcomponent = 0
 
